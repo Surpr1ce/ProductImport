@@ -1,14 +1,14 @@
 <?php
 require_once 'Database.php';
 class ProductImport {
-    private $database;
+    private Database $database;
 
     public function __construct(Database $database)
     {
         $this->database = $database;
     }
 
-    public function prepare($stock_file, $common_file): array
+    public function prepare(string $stock_file, string $common_file): array
     {
         $formatted_data = [];
 
@@ -65,7 +65,7 @@ class ProductImport {
         return $formatted_data;
     }
 
-    public function import($stock_file, $common_file): void
+    public function import(string $stock_file, string $common_file): void
     {
         $data = $this->prepare($stock_file, $common_file);
 
